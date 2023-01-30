@@ -24,6 +24,7 @@ def ekstraksi_data():
     hasil['dirasakan'] = "Dirasakan (Skala MM1): III kairatu"
 
     return hasil
+
 def tampilkan_data(result):
     print('Gempa terkini  berdasarkan BMKG')
     print(f"Tanggal {result['Tanggal']}")
