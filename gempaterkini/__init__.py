@@ -14,30 +14,34 @@ def ekstraksi_data():
     :return:
     """
     try:
-        content = requests.get('https://b mkg.go.id')
+        content = requests.get("https://bmkg.go.id")
     except Exception:
         return None
 
-    print(content)
-    #soup = BeautifulSoup(content)
-    #print(soup.prettify())
+    if content.status_code == 200:
+        print(content.status_code)
+        #soup = BeautifulSoup(content)
+        #print(soup.prettify())
 
-    hasil = dict()
-    hasil['Tanggal'] = '30 Januari 2023'
-    hasil['Waktu'] = '13: 24:19 WIB'
-    hasil['Magnitudo'] = '3.2'
-    hasil['Kedalaman'] = '3 km'
-    hasil['Lokasi'] = {'LS': 3.33, 'BT': 128.35}
-    hasil['Pusat Gempa'] = 'Pusat gempa berada di darat 1 km Utara Kairatu'
-    hasil['dirasakan'] = "Dirasakan (Skala MM1): III kairatu"
+        hasil = dict()
+        hasil['Tanggal'] = '30 Januari 2023'
+        hasil['Waktu'] = '13: 24:19 WIB'
+        hasil['Magnitudo'] = '3.2'
+        hasil['Kedalaman'] = '3 km'
+        hasil['Lokasi'] = {'LS': 3.33, 'BT': 128.35}
+        hasil['Pusat Gempa'] = 'Pusat gempa berada di darat 1 km Utara Kairatu'
+        hasil['dirasakan'] = "Dirasakan (Skala MM1): III kairatu"
 
-    return hasil
+        return hasil
+    else:
+        return None
 
 def tampilkan_data(result):
     """ Tampilakn Data Result"""
     if result is None:
-        print('Data Tidak ada')
+        print('Data Tidak ada gempa dari BMKG')
         return
+
     print('Gempa terkini  berdasarkan BMKG')
     print(f"Tanggal {result['Tanggal']}")
     print(f"Waktu {result['Waktu']}")
