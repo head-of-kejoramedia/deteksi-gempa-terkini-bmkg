@@ -1,3 +1,7 @@
+import requests
+from bs4 import BeautifulSoup
+
+
 def ekstraksi_data():
     """
     Tanggal: 30 Januari 2023
@@ -9,6 +13,15 @@ def ekstraksi_data():
     Dirasakan: Dirasakan(Skala MMI): III Kairatu
     :return:
     """
+    try:
+        content = requests.get('https://b mkg.go.id')
+    except Exception:
+        return None
+
+    print(content)
+    #soup = BeautifulSoup(content)
+    #print(soup.prettify())
+
     hasil = dict()
     hasil['Tanggal'] = '30 Januari 2023'
     hasil['Waktu'] = '13: 24:19 WIB'
@@ -22,6 +35,9 @@ def ekstraksi_data():
 
 def tampilkan_data(result):
     """ Tampilakn Data Result"""
+    if result is None:
+        print('Data Tidak ada')
+        return
     print('Gempa terkini  berdasarkan BMKG')
     print(f"Tanggal {result['Tanggal']}")
     print(f"Waktu {result['Waktu']}")
