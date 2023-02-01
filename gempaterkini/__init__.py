@@ -59,5 +59,6 @@ def tampilkan_data(result):
     print(f"Lokasi {result['Lokasi']}")
     print(f"{result['Pusat Gempa']}")
     print(f"{result['Dirasakan']}")
+    print('\nSelalu Waspada Untuk Penduduk Area Di Atas')
 
 
